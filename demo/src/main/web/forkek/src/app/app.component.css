@@ -1,0 +1,63 @@
+*{
+    box-sizing: border-box;
+}
+.titlebar{
+    width:20vw;
+    height:10vh;
+    position: fixed;
+    background-color: black;
+    color: blanchedalmond;
+    top:0px;
+    left:0px;
+    z-index: 2;
+    display: flex;
+    align-content: center;
+}
+.titlebar img{
+    max-height: 10vh;
+    display: inline;
+}
+.titlebar h1{
+    margin-left: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+.sidebar{
+    width:20vw;
+    height:90vh;
+    position: fixed;
+    float: left;
+    background-color: #3c3c3c;
+    top: 10vh;
+    left:0px;
+}
+.sidebar ul{
+    list-style-type: none;
+}
+.sidebar ul li{
+    color: blanchedalmond;
+    margin-top: 5vh;
+    max-width: 7em;
+    padding: 0.1875em;
+}
+.sidebar ul li:hover{
+    color: #3c3c3c;
+    background-color: white;
+    margin-top: 5vh;
+    cursor: pointer;
+}
+.sidebar ul li:hover::after{
+    width:1,265em;
+    height:1,265em;
+    content: '';
+    background-image: url("../assets/rightArrow.jpg");
+    background-size: 100% 100%;
+    display: inline-block;
+}
+.content{
+    width:60%;
+    top:10vh;
+    left:20vw;
+    position: absolute;
+}

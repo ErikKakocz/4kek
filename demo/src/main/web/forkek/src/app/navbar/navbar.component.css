@@ -1,0 +1,30 @@
+mat-toolbar{
+    width:80vw;
+    height: 10vh;
+    position: fixed;
+    z-index: 2;
+    left: 20vw;
+    background-color: black;
+    display:flex;
+    justify-content: space-between;
+}
+.userdiv{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.user-image{
+    max-width: 7vh;
+    height: 7vh;
+    border-radius: 7vh;
+    margin-right:0.5vw;
+}
+.usernamediv{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 2vw;
+}
+.nav-bar-button:hover{
+    cursor: pointer;
+
+}
