@@ -15,11 +15,9 @@ public class VoteEntity {
     private int upvotes;
     private int downvotes;
 
-    @OneToMany
-    @JsonIgnore
+    @OneToMany(fetch=FetchType.EAGER)
     private Set<UserEntity> upvoters;
 
-    @OneToMany
-    @JsonIgnore
+    @OneToMany(fetch=FetchType.EAGER)
     private Set<UserEntity> downvoters;
 }

@@ -6,6 +6,7 @@ import com.ShadowwolfIndustries.demo.data.repository.UserRepository;
 import com.ShadowwolfIndustries.demo.data.repository.VoteRepository;
 import com.ShadowwolfIndustries.demo.model.Exceptions.InvalidVoteException;
 import com.ShadowwolfIndustries.demo.model.enums.VoteType;
+import com.ShadowwolfIndustries.demo.projection.VoteProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -34,10 +35,14 @@ public class VoteService {
         return voteRepository.save(votes);
     }
 
+    public VoteProjection find(long id){
+        return voteRepository.findprojectionById(id);
+    }
+
     @Transactional(isolation = Isolation.SERIALIZABLE/*, propagation= Propagation.REQUIRED, readOnly=false*/)
-    public VoteEntity updatePostUpvotes(VoteEntity vote, Principal principal, VoteType type) throws NoSuchElementException, InvalidVoteException {
+    public VoteProjection updatePostUpvotes(long id, Principal principal, VoteType type) throws NoSuchElementException, InvalidVoteException {
         UserEntity user=userRepository.findByUsername(principal.getName()).orElseThrow(() -> new NoSuchElementException());
-        VoteEntity voteEntity = voteRepository.findById(vote.getId()).orElseThrow(() -> new NoSuchElementException());
+        VoteEntity voteEntity = voteRepository.findById(id).orElseThrow(() -> new NoSuchElementException());
         if(!(voteEntity.getUpvoters().contains(user))
                 && type==VoteType.UPVOTE){
             voteEntity.setUpvotes(voteEntity.getUpvotes()+1);
@@ -57,6 +62,7 @@ public class VoteService {
 
         } else
             throw new InvalidVoteException();
-        return voteRepository.save(voteEntity);
+        voteRepository.save(voteEntity);
+        return voteRepository.findprojectionById(voteEntity.getId());
     }
 }

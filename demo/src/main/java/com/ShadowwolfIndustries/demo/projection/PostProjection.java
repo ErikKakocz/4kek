@@ -1,7 +1,6 @@
 package com.ShadowwolfIndustries.demo.projection;
 
 
-import com.ShadowwolfIndustries.demo.data.entity.VoteEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import lombok.AllArgsConstructor;
@@ -9,11 +8,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Base64;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -24,7 +21,8 @@ public class PostProjection {
     private String title;
     private byte[] pic;
     private String user;
-    private VoteEntity votes;
+    private Long votesId;
+
 
 
     @JsonSetter

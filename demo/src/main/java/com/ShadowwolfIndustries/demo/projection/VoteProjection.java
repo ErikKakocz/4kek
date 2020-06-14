@@ -1,13 +1,17 @@
 package com.ShadowwolfIndustries.demo.projection;
 
-import java.util.HashSet;
+import com.ShadowwolfIndustries.demo.data.entity.UserEntity;
+
+import java.util.List;
+import java.util.Set;
+
 
 public interface VoteProjection {
 
     Long getId();
     int getUpvotes();
     int getDownvotes();
-    HashSet<UserProjection> getUpvoters();
-    HashSet<UserProjection> getDownvoters();
+    List<UserProjection> upvoters();
+    List<UserProjection> downvoters();
 
 }
