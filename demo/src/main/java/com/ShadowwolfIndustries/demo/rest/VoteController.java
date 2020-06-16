@@ -1,6 +1,6 @@
 package com.ShadowwolfIndustries.demo.rest;
 
-import com.ShadowwolfIndustries.demo.data.entity.VoteEntity;
+
 import com.ShadowwolfIndustries.demo.model.Exceptions.InvalidVoteException;
 import com.ShadowwolfIndustries.demo.model.enums.VoteType;
 import com.ShadowwolfIndustries.demo.projection.VoteProjection;
@@ -19,8 +19,9 @@ public class VoteController {
     @Autowired
     private VoteService voteService;
 
+    @CrossOrigin
     @GetMapping("/find")
-    public ResponseEntity<VoteProjection> findVoteProjectionById(@RequestBody long id){
+    public ResponseEntity<VoteProjection> findVoteProjectionById(@RequestParam long id){
         return new ResponseEntity<>(voteService.find(id),HttpStatus.OK);
     }
 

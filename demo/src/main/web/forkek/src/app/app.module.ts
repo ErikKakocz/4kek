@@ -14,13 +14,15 @@ import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddPostModalComponent } from './add-post-modal/add-post-modal.component';
+import { VoteBarComponent } from './vote-bar/vote-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
     NavbarComponent,
-    AddPostModalComponent
+    AddPostModalComponent,
+    VoteBarComponent
   ],
   imports: [
     BrowserModule,

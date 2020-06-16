@@ -12,10 +12,11 @@ export class PostComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    console.log("post initialization:")
     this.httpClient.get<Post[]>("http://localhost:8081/api/posts/all").subscribe(posts => {
       this.posts = posts;
-    console.log(posts);}
-      );
+      console.log(posts);
+    });
   }
 
 }
