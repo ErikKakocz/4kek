@@ -2,6 +2,7 @@ package com.ShadowwolfIndustries.demo.service;
 
 import com.ShadowwolfIndustries.demo.data.entity.UserEntity;
 import com.ShadowwolfIndustries.demo.data.repository.UserRepository;
+import com.ShadowwolfIndustries.demo.model.Exceptions.InvalidLoginCredentialsException;
 import com.ShadowwolfIndustries.demo.projection.UserProjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -38,5 +39,15 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
+    }
+
+    public UserProjection validateUserLogin(UserEntity entity) throws InvalidLoginCredentialsException {
+        UserProjection projection=userRepository.findProjectionByUsername(entity.getUsername());
+        String rawPass=entity.getPassword();
+        String storedPass=userRepository.getPasswordById(projection.getId());
+        if(passwordEncoder.matches(rawPass,storedPass))
+            return projection;
+        else
+            throw new InvalidLoginCredentialsException();
     }
 }

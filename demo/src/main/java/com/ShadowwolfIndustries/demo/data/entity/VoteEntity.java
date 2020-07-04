@@ -1,9 +1,9 @@
 package com.ShadowwolfIndustries.demo.data.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ShadowwolfIndustries.demo.model.enums.VoteType;
 import lombok.Data;
 import javax.persistence.*;
-import java.util.Set;
+
 
 @Entity
 @Data
@@ -11,13 +11,14 @@ public class VoteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private int upvotes;
-    private int downvotes;
+    private Long id;
 
-    @OneToMany(fetch=FetchType.EAGER)
-    private Set<UserEntity> upvoters;
+    private VoteType type;
 
-    @OneToMany(fetch=FetchType.EAGER)
-    private Set<UserEntity> downvoters;
+    @ManyToOne
+    PostEntity post;
+
+    @ManyToOne
+    UserEntity voter;
+
 }

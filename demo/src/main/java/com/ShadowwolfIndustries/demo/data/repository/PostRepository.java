@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<PostEntity, Long> {
 
-    @Query("SELECT new com.ShadowwolfIndustries.demo.projection.PostProjection(p.id,p.title,p.pic,p.user.username,p.votes.id) from PostEntity p")
+    @Query("SELECT new com.ShadowwolfIndustries.demo.projection.PostProjection(p.id,p.title,p.pic,p.user.username) from PostEntity p")
     List<PostProjection> findAllProjection();
 }

@@ -8,10 +8,16 @@ mat-toolbar{
     display:flex;
     justify-content: space-between;
 }
+.nav-bar-button{
+    border: none;
+    background-color: black;
+    color: whitesmoke;
+}
 .userdiv{
     display: flex;
     align-content: center;
     justify-content: center;
+    margin-right: 0em;
 }
 .user-image{
     max-width: 7vh;
@@ -19,12 +25,18 @@ mat-toolbar{
     border-radius: 7vh;
     margin-right:0.5vw;
 }
-.usernamediv{
+.userNameButton{
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 2vw;
 }
+.usernamediv:hover{
+    cursor: pointer;
+}
 .nav-bar-button:hover{
     cursor: pointer;
 
+}
+.disableToggle:disabled{
+    visibility:hidden;
 }

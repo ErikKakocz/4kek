@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AddPostModalComponent } from './add-post-modal/add-post-modal.component';
 import { VoteBarComponent } from './vote-bar/vote-bar.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
+import { LoggedInMenuComponent } from './logged-in-menu/logged-in-menu.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { VoteBarComponent } from './vote-bar/vote-bar.component';
     PostComponent,
     NavbarComponent,
     AddPostModalComponent,
-    VoteBarComponent
+    VoteBarComponent,
+    LoginModalComponent,
+    LoggedInMenuComponent
   ],
   imports: [
     BrowserModule,

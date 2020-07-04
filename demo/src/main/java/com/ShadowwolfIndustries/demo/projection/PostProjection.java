@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Base64;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -21,7 +22,6 @@ public class PostProjection {
     private String title;
     private byte[] pic;
     private String user;
-    private Long votesId;
 
 
 

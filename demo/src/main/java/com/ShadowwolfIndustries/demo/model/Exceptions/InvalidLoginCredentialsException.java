@@ -1,4 +1,4 @@
 package com.ShadowwolfIndustries.demo.model.Exceptions;
 
-public class InvalidLoginCredentialsException {
+public class InvalidLoginCredentialsException extends Exception {
 }

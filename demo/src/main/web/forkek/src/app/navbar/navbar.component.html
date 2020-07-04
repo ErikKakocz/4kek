@@ -1,7 +1,7 @@
 <mat-toolbar class="nav-bar">
-    <div class="nav-bar-button" (click)="clickCreatePost()">Create Post</div>
+    <Button id="CreatePostButton" class="nav-bar-button disableToggle" (click)="clickCreatePost()">Create Post</Button>
     <div class="userdiv">
-        <div class="usernamediv" (click)="loginDialog()">Y u no log in?</div>
+        <Button mat-Button class="nav-bar-button userNameButton" (click)="loginDialog()">{{username}}</Button>
         <img class="user-image" src="../../assets/nouser.jpg">
     </div>
 </mat-toolbar>

@@ -11,7 +11,7 @@ public class AuthorityEntity implements GrantedAuthority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Column(unique=true)
     private String authority;

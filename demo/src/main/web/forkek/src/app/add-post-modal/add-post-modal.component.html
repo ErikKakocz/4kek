@@ -6,8 +6,12 @@
             <input matInput placeholder="Placeholder">
         </mat-form-field>
     </p>
+    <p>
+        <input class="ng-hide" id="input-file-id" multiple type="file" />
+        <label for="input-file-id" class="md-button md-raised md-primary">Choose Files</label>
+    </p>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button>Submit</button>
-    <button mat-raised-button color="warn">Cancel</button>
+    <button mat-raised-button (click)="submitPost()">Submit</button>
+    <button mat-raised-button color="warn" (click)="closeThis()">Cancel</button>
 </mat-dialog-actions>

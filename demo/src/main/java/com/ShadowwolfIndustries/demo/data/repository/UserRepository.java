@@ -15,4 +15,10 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     @Query("SELECT u from UserEntity u")
     List<UserProjection> findAllProjection();
+
+    @Query("SELECT u from UserEntity u WHERE u.username like :uname" )
+    UserProjection findProjectionByUsername(String uname);
+
+    @Query("SELECT u.password from UserEntity u WHERE u.id = :id" )
+    String getPasswordById(Long id);
 }

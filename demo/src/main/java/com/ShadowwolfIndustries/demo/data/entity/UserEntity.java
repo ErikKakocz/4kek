@@ -13,7 +13,8 @@ import java.util.List;
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
-    private long Id;
+    private Long Id;
+    @Column(unique=true)
     private String username;
     private String password;
     private boolean enabled;

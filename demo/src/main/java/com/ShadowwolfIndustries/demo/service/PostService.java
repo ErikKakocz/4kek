@@ -30,8 +30,6 @@ public class PostService {
     public PostEntity save(PostEntity post, Principal principal){
         UserEntity user = userRepository.findByUsername(principal.getName()).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
         post.setUser(user);
-        VoteEntity votes=voteService.createVotes();
-        post.setVotes(votes);
         return postRepository.save(post);
     }
 
