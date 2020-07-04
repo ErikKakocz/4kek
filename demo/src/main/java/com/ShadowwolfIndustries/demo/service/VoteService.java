@@ -1,5 +1,6 @@
 package com.ShadowwolfIndustries.demo.service;
 
+import com.ShadowwolfIndustries.demo.data.entity.PostEntity;
 import com.ShadowwolfIndustries.demo.data.entity.UserEntity;
 import com.ShadowwolfIndustries.demo.data.entity.VoteEntity;
 import com.ShadowwolfIndustries.demo.data.repository.PostRepository;
@@ -37,12 +38,10 @@ public class VoteService {
         return voteRepository.findprojectionsByPostId(postId);
     }
 
-    public VoteProjection postVote(Long postId, Principal principal, VoteType type) throws NoSuchElementException, InvalidVoteException {
+    public VoteEntity postVote(Long postId, Principal principal, VoteType type) throws NoSuchElementException, InvalidVoteException {
         UserEntity user=userRepository.findByUsername(principal.getName()).orElseThrow(() -> new NoSuchElementException());
-        VoteEntity newVote=new VoteEntity();
-        System.out.println("before FUBAR");
-        Optional<VoteEntity> existingVote=voteRepository.findByPostAndUser(postId,(user.getId()));
-        System.out.println("after FUBAR");
+        PostEntity post=postRepository.findById(postId).orElseThrow(() -> new NoSuchElementException());
+        Optional<VoteEntity> existingVote=voteRepository.findByPostAndUser(post.getId(),user.getId());
         if(existingVote.isPresent()){
             VoteEntity vote=existingVote.get();
             if(vote.getType()==type)
@@ -51,9 +50,10 @@ public class VoteService {
                 voteRepository.delete(vote);
             }
         }
-        newVote.setPost(postRepository.getOne(postId));
+        VoteEntity newVote=new VoteEntity();
+        newVote.setPost(post);
         newVote.setType(type);
-        newVote.setVoter(userRepository.getOne(user.getId()));
-        return (VoteProjection) voteRepository.save(newVote);
+        newVote.setVoter(user);
+        return voteRepository.save(newVote);
     }
 }

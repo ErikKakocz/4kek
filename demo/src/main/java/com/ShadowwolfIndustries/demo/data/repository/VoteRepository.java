@@ -16,10 +16,10 @@ public interface VoteRepository extends JpaRepository<VoteEntity, Long> {
     @Query("SELECT v from VoteEntity v WHERE v.id = :id")
     VoteProjection findprojectionById(Long id);
 
-    @Query("SELECT v from VoteEntity v WHERE v.post = :id")
+    @Query("SELECT v from VoteEntity v WHERE v.post.id = :id")
     Set<VoteProjection> findprojectionsByPostId(Long id);
 
-    @Query("SELECT v from VoteEntity v WHERE v.post = :postId AND v.voter = :userId")
+    @Query("SELECT v from VoteEntity v WHERE v.post.id = :postId AND v.voter.id = :userId")
     Optional<VoteEntity> findByPostAndUser(Long postId, Long userId);
 
 }

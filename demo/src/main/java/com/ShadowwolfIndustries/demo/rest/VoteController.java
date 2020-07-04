@@ -1,6 +1,7 @@
 package com.ShadowwolfIndustries.demo.rest;
 
 
+import com.ShadowwolfIndustries.demo.data.entity.VoteEntity;
 import com.ShadowwolfIndustries.demo.model.Exceptions.InvalidVoteException;
 import com.ShadowwolfIndustries.demo.model.enums.VoteType;
 import com.ShadowwolfIndustries.demo.projection.VoteProjection;
@@ -28,7 +29,7 @@ public class VoteController {
     }
 
     @PostMapping("/upvote")
-    public ResponseEntity<VoteProjection> upvotePost(@RequestBody Long postId, Principal principal){
+    public ResponseEntity<VoteEntity> upvotePost(@RequestBody Long postId, Principal principal){
         try {
             return new ResponseEntity<>(voteService.postVote(postId,principal,VoteType.UPVOTE), HttpStatus.OK);
         } catch (InvalidVoteException e) {
@@ -38,7 +39,7 @@ public class VoteController {
     }
 
     @PostMapping("/downvote")
-    public ResponseEntity<VoteProjection> downvotePost(@RequestBody Long postId, Principal principal){
+    public ResponseEntity<VoteEntity> downvotePost(@RequestBody Long postId, Principal principal){
         try {
             return new ResponseEntity<>(voteService.postVote(postId,principal,VoteType.DOWNVOTE), HttpStatus.OK);
         } catch (InvalidVoteException e) {
